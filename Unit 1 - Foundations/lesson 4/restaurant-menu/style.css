@@ -1,3 +1,7 @@
+/* :root {
+  font-size: 20px;
+} */
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #f5f5f5;
@@ -6,13 +10,26 @@ body {
 
 h1 {
   color: darkred;
+  font-size: 32px;
+  text-align: center;
 }
 
 h2 {
   color: #333;
 }
 
+/* pixels - px, relative - %, em - relative to font size, rem - relative to root font size */
+
+/* .about {
+  font-size: 20px;
+}
+
+.about-text {
+  font-size: 1rem;
+} */
+
 .menu-item {
+  position: relative;
   width: 300px;
   background-color: white;
   padding: 20px;
@@ -20,4 +37,75 @@ h2 {
   border: 1px solid black;
   border-radius: 10px;
   margin: 20px 0;
+}
+
+.badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  background-color: red;
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+/* layouts - flexbox, grid, float, positioning */
+
+/* layouts - flexbox example */
+/* .menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex-direction: column-reverse;
+  gap: 20px;
+  distribute along main axis (row direction = horizonal, column direction = vetical)
+  justify-content: center;
+  distribute along secondary axis (row direction = vertical, column direction = horizontal) 
+  align-items: center;
+} */
+
+/* layouts - css grid example */
+.menu-list {
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr;
+  gap: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #bb6969;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.navbar h2 {
+  color: white;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+/*layout - float example */
+.restaurant-image {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }
