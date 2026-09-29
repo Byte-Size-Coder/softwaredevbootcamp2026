@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f8f5f0;
+}
+
+/* Header Styles */
+header {
+  background-color: #3d2b1f;
+  color: white;
+  padding: 1rem 0.5rem;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 24px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Hero Section Styles */
+
+section {
+  padding: 50px 25px;
+  border: 1px solid #ccc;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.button {
+  background-color: #3d2b1f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 25px;
+}
+
+.button:hover {
+  background-color: #5a3e2b;
+}
+
+/* Menu Styles */
+.menu-title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.menu-cards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.card {
+  max-width: 400px;
+  position: relative;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 3px #ddd;
+}
+
+.card-badge {
+  position: absolute;
+  background-color: #3d2b1f;
+  top: 10px;
+  left: 10px;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+/* Footer Styles */
+
+footer {
+  background-color: #3d2b1f;
+  color: white;
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-top: 4rem;
+}
