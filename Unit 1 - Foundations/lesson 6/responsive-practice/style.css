@@ -71,3 +71,58 @@ nav a {
 .food-image {
   font-size: 80px;
 }
+
+.hero h2 {
+  font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .menu {
+    /* flex wrap solution */
+    /* flex-wrap: wrap;
+    justify-content: center; */
+
+    /* Column direction solution */
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 440px) {
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero {
+    height: auto;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero button {
+    margin-top: 24px;
+  }
+}
