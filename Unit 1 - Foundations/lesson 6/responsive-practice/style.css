@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  height: 80px;
+  padding: 0 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: #222;
+  color: white;
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.hero {
+  height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 22px;
+}
+
+.hero button {
+  padding: 15px 30px;
+  font-size: 18px;
+}
+
+.menu {
+  display: flex;
+  gap: 30px;
+  padding: 50px;
+}
+
+.card {
+  width: 300px;
+  padding: 25px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.food-image {
+  font-size: 80px;
+}
