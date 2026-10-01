@@ -72,10 +72,6 @@ nav a {
   font-size: 80px;
 }
 
-.hero h2 {
-  font-size: 2rem;
-}
-
 @media (max-width: 768px) {
   header {
     height: auto;
