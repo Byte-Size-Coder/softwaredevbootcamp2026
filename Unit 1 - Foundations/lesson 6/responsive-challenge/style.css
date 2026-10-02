@@ -1,3 +1,7 @@
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
 * {
   box-sizing: border-box;
 }
@@ -6,6 +10,10 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
+
+/* ========================================
+   HEADER
+   ======================================== */
 
 header {
   height: 80px;
@@ -30,8 +38,13 @@ nav a {
   font-size: 18px;
 }
 
+/* ========================================
+   HERO
+   ======================================== */
+
 .hero {
-  height: 450px;
+  min-height: 450px;
+  padding: 60px 30px;
 
   display: flex;
   flex-direction: column;
@@ -43,17 +56,25 @@ nav a {
 
 .hero h2 {
   font-size: 64px;
+  margin-bottom: 10px;
 }
 
 .hero p {
   font-size: 24px;
+
   max-width: 700px;
+
+  line-height: 1.5;
 }
 
 .hero button {
   padding: 15px 35px;
   font-size: 18px;
 }
+
+/* ========================================
+   SPEAKERS
+   ======================================== */
 
 .speakers {
   padding: 60px;
@@ -62,13 +83,19 @@ nav a {
 
 .speaker-container {
   display: flex;
+
   justify-content: center;
+
   gap: 40px;
+
+  flex-wrap: wrap;
 }
 
 .speaker {
   width: 300px;
+
   padding: 30px;
+
   border: 1px solid #ddd;
 }
 
@@ -76,18 +103,159 @@ nav a {
   font-size: 100px;
 }
 
+/* ========================================
+   SCHEDULE
+   ======================================== */
+
 .schedule {
   padding: 60px;
 }
 
+.schedule h2 {
+  text-align: center;
+}
+
 .schedule-container {
-  width: 800px;
+  width: 100%;
+
+  max-width: 800px;
+
   margin: auto;
 }
 
 .schedule-container div {
   display: flex;
+
   justify-content: space-between;
+  gap: 20px;
+
   padding: 20px;
+
   border-bottom: 1px solid #ddd;
+}
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 900px) {
+  /* HEADER */
+
+  header {
+    padding: 0 30px;
+  }
+
+  nav {
+    gap: 20px;
+  }
+
+  /* HERO */
+
+  .hero h2 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 20px;
+  }
+
+  /* SPEAKERS */
+
+  .speakers {
+    padding: 40px 30px;
+  }
+
+  .speaker-container {
+    gap: 20px;
+  }
+
+  /* SCHEDULE */
+
+  .schedule {
+    padding: 40px 30px;
+  }
+}
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 600px) {
+  /* HEADER */
+
+  header {
+    height: auto;
+
+    padding: 25px 20px;
+
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  nav {
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+  }
+
+  /* HERO */
+
+  .hero {
+    min-height: auto;
+
+    padding: 80px 20px;
+  }
+
+  .hero h2 {
+    font-size: 36px;
+
+    line-height: 1.1;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  /* SPEAKERS */
+
+  .speakers {
+    padding: 50px 20px;
+  }
+
+  .speaker-container {
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .speaker {
+    width: 100%;
+
+    max-width: 400px;
+  }
+
+  .speaker-image {
+    font-size: 80px;
+  }
+
+  /* SCHEDULE */
+
+  .schedule {
+    padding: 50px 20px;
+  }
+
+  .schedule-container {
+    width: 100%;
+  }
+
+  .schedule-container div {
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 20px 10px;
+  }
 }

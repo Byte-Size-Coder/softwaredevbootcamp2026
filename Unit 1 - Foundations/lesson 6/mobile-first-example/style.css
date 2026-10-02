@@ -1,0 +1,363 @@
+/* ========================================
+   BASIC RESET
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+
+  font-family: Arial, sans-serif;
+
+  color: #222;
+  background-color: #f5f5f5;
+}
+
+/* ========================================
+   HEADER
+   MOBILE FIRST
+   ======================================== */
+
+.header {
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 20px;
+
+  background-color: #111;
+  color: white;
+}
+
+.logo {
+  margin: 0;
+
+  font-size: 28px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.navigation a {
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 16px;
+}
+
+/* ========================================
+   HERO
+   MOBILE FIRST
+   ======================================== */
+
+.hero {
+  padding: 80px 20px;
+
+  text-align: center;
+
+  background-color: white;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 800px;
+
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+
+  font-size: 14px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+}
+
+.hero h2 {
+  margin: 0 0 20px;
+
+  font-size: 36px;
+
+  line-height: 1.1;
+}
+
+.hero-description {
+  margin: 0 auto 30px;
+
+  font-size: 18px;
+
+  line-height: 1.6;
+}
+
+.hero-button {
+  padding: 14px 24px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background-color: #222;
+
+  color: white;
+
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+/* ========================================
+   PRODUCTS
+   MOBILE FIRST
+   ======================================== */
+
+.products {
+  padding: 60px 20px;
+}
+
+.section-heading {
+  margin-bottom: 40px;
+
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: 30px;
+}
+
+/* ========================================
+   PRODUCT CARDS
+   MOBILE FIRST
+   ======================================== */
+
+.product-container {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+.product-card {
+  width: 100%;
+
+  padding: 30px 20px;
+
+  text-align: center;
+
+  background-color: white;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+}
+
+.product-icon {
+  font-size: 60px;
+
+  margin-bottom: 15px;
+}
+
+.product-card h3 {
+  margin-top: 0;
+
+  font-size: 22px;
+}
+
+.product-card p {
+  line-height: 1.6;
+
+  color: #666;
+}
+
+.product-card button {
+  padding: 10px 20px;
+
+  border: 1px solid #222;
+
+  background-color: white;
+
+  cursor: pointer;
+
+  border-radius: 5px;
+}
+
+/* ========================================
+   FEATURES
+   MOBILE FIRST
+   ======================================== */
+
+.features {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  padding: 60px 20px;
+
+  background-color: #222;
+
+  color: white;
+
+  text-align: center;
+}
+
+.feature {
+  padding: 20px;
+}
+
+.feature h3 {
+  font-size: 24px;
+
+  margin-bottom: 10px;
+}
+
+.feature p {
+  line-height: 1.5;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+  padding: 30px;
+
+  text-align: center;
+
+  background-color: #111;
+
+  color: white;
+}
+
+/* ==================================================
+   TABLET
+   768px AND ABOVE
+   ================================================== */
+
+@media (min-width: 768px) {
+  /* HEADER */
+
+  .header {
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    padding: 20px 40px;
+  }
+
+  .navigation {
+    flex-direction: row;
+
+    gap: 25px;
+  }
+
+  /* HERO */
+
+  .hero {
+    padding: 120px 40px;
+  }
+
+  .hero h2 {
+    font-size: 52px;
+  }
+
+  /* PRODUCTS */
+
+  .product-container {
+    flex-direction: row;
+
+    gap: 30px;
+  }
+
+  .product-card {
+    width: 33.333%;
+  }
+
+  /* FEATURES */
+
+  .features {
+    flex-direction: row;
+
+    justify-content: center;
+  }
+
+  .feature {
+    width: 30%;
+
+    max-width: 300px;
+  }
+}
+
+/* ==================================================
+   DESKTOP
+   1100px AND ABOVE
+   ================================================== */
+
+@media (min-width: 1100px) {
+  /* HEADER */
+
+  .header {
+    padding: 25px 60px;
+  }
+
+  .navigation {
+    gap: 35px;
+  }
+
+  /* HERO */
+
+  .hero {
+    padding: 160px 60px;
+  }
+
+  .hero h2 {
+    font-size: 64px;
+  }
+
+  .hero-description {
+    font-size: 20px;
+  }
+
+  /* PRODUCTS */
+
+  .products {
+    padding: 100px 60px;
+  }
+
+  .section-heading h2 {
+    font-size: 40px;
+  }
+
+  .product-card {
+    padding: 40px 30px;
+  }
+
+  /* FEATURES */
+
+  .features {
+    padding: 80px 60px;
+
+    gap: 50px;
+  }
+}
