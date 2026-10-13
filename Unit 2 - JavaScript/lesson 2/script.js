@@ -229,3 +229,15 @@ console.log(games);
 
 games.splice(1, 1, "Replaced Game"); // replace the element at index 1 with "Replaced Game"
 console.log(games);
+
+let invoices = [
+  { id: 1, amount: 100 },
+  { id: 2, amount: 100 },
+  { id: 3, amount: 100 },
+  { id: 4, amount: 100 },
+  { id: 5, amount: 100 },
+];
+
+const foundInvoice = invoices.find((invoice) => invoice.id === 3);
+
+console.log(foundInvoice);
