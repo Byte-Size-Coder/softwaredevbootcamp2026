@@ -1,0 +1,15 @@
+.button {
+  background-color: blue;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(51, 51, 247);
+}
+
+.my-bg-primary {
+  background-color: pink;
+}
