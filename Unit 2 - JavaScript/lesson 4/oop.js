@@ -26,6 +26,10 @@ class Game {
     console.log("Bought " + quantity + " of " + this.title);
     this.isAvailable = false;
   }
+
+  getTotalPrice(quantity) {
+    game.total = this.price * quantity;
+  }
 }
 // old way
 // const game = {
@@ -51,9 +55,14 @@ class Game {
 // };
 
 // new way using class
+
+{
+  const game = new Game("Minecraft", "Sandbox", 29.99, true);
+  const game2 = new Game("Battlfield", "Shooter", 59.99, true);
+  const game3 = new Game(49.99);
+}
+
 const game = new Game("Minecraft", "Sandbox", 29.99, true);
-const game2 = new Game("Battlfield", "Shooter", 59.99, true);
-const game3 = new Game(49.99);
 
 console.log(game);
 
@@ -99,3 +108,9 @@ for (const key in player) {
   console.log(key);
   console.log("value of " + key + " is " + player[key]);
 }
+
+game.getTotalPrice(2);
+
+console.log("Total price for Fortnite: $" + game.total);
+
+game.price;
