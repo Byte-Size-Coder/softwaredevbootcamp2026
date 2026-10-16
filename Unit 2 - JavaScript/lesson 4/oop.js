@@ -31,6 +31,8 @@ class Game {
     game.total = this.price * quantity;
   }
 }
+
+const game4 = new Game("The Witcher 3", "RPG", 39.99, true);
 // old way
 // const game = {
 //   title: "Minecraft",
@@ -56,13 +58,9 @@ class Game {
 
 // new way using class
 
-{
-  const game = new Game("Minecraft", "Sandbox", 29.99, true);
-  const game2 = new Game("Battlfield", "Shooter", 59.99, true);
-  const game3 = new Game(49.99);
-}
-
 const game = new Game("Minecraft", "Sandbox", 29.99, true);
+const game2 = new Game("Battlfield", "Shooter", 59.99, true);
+const game3 = new Game(49.99);
 
 console.log(game);
 

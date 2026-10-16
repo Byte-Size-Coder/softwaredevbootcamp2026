@@ -1,7 +1,7 @@
 // Object: a value that groups related properties
 // property: a named piece of information stored in a object
 // method: a function associated with the object
-
+const game4 = new Game("The Witcher 3", "RPG", 39.99, true);
 // class: a blueprint for creating objects with similar properties and methods
 class Game {
   // constructor method to initialize properties
@@ -56,13 +56,9 @@ class Game {
 
 // new way using class
 
-{
-  const game = new Game("Minecraft", "Sandbox", 29.99, true);
-  const game2 = new Game("Battlfield", "Shooter", 59.99, true);
-  const game3 = new Game(49.99);
-}
-
 const game = new Game("Minecraft", "Sandbox", 29.99, true);
+const game2 = new Game("Battlfield", "Shooter", 59.99, true);
+const game3 = new Game(49.99);
 
 console.log(game);
 
@@ -76,7 +72,6 @@ console.log(game.propertyName);
 game.title = "Fortnite";
 
 console.log(game);
-console.log(game3);
 
 // const you can reassign the whole object, but can modify properties of the object
 // game = {
