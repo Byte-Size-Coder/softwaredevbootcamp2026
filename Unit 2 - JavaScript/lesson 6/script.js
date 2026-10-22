@@ -30,3 +30,14 @@ setTimeout(function () {
 
 console.log("Display loading spinner");
 console.log("do something else...");
+
+// create a countdown
+
+// have the console print 3....2....1... GO! exactly each second that it should be
+// for example 3 in 1 second, 2 in the next second, 1 in the next second, and GO! in the final second
+
+// starting countdown
+// 1 second later 3....
+// 1 second later 2....
+// 1 second later 1....
+// 1 second later GO!
