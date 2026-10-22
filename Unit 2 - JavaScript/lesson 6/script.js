@@ -21,15 +21,15 @@
 
 // console.log("The Program has ended");
 
-console.log("Loading Profile....");
+// console.log("Loading Profile....");
 
-setTimeout(function () {
-  console.log("Profile Loaded");
-  console.log("Display profiles on screen");
-}, 5000); // 3000 milliseconds = 3 seconds
+// setTimeout(function () {
+//   console.log("Profile Loaded");
+//   console.log("Display profiles on screen");
+// }, 5000); // 3000 milliseconds = 3 seconds
 
-console.log("Display loading spinner");
-console.log("do something else...");
+// console.log("Display loading spinner");
+// console.log("do something else...");
 
 // create a countdown
 
@@ -41,3 +41,57 @@ console.log("do something else...");
 // 1 second later 2....
 // 1 second later 1....
 // 1 second later GO!
+
+// console.log("Starting countdown...");
+
+// setTimeout(function () {
+//   console.log("3....");
+// }, 1000);
+
+// setTimeout(function () {
+//   console.log("2....");
+// }, 2000);
+
+// setTimeout(function () {
+//   console.log("1....");
+// }, 3000);
+
+// setTimeout(function () {
+//   console.log("GO!");
+// }, 4000);
+
+// nested example with setTimeout
+// setTimeout(function () {
+//   console.log("3....");
+//   setTimeout(function () {
+//     console.log("2....");
+//     setTimeout(function () {
+//       console.log("1....");
+//       setTimeout(function () {
+//         console.log("GO!");
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// }, 1000);
+
+// Promises
+const order = new Promise(function (resolve, reject) {
+  setTimeout(() => {
+    resolve("Your food is ready!");
+    reject("Something went wrong!");
+  }, 2000);
+});
+
+// then key is used to handle the resolved value of the promise
+order
+  .then(function (message) {
+    console.log(message);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+// expand the order promise following
+// add random success or failure to the order promise
+// use Math.random() to determine success or failure and resolve or reject accodingly
+// put console.logs in front and below the promise to indicate the start and end of the order process
