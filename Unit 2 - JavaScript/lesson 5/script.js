@@ -60,7 +60,7 @@
 // Example of CRUD operations on the task list
 
 // Create
-const newTask = document.createElement("li");
+const newTask = document.createElement("p");
 newTask.textContent = "Learn JavaScript DOM";
 
 // place the item somewhere in the DOM
@@ -126,8 +126,8 @@ if (taskList) {
 const addTaskButton = document.getElementById("add-task");
 
 const addTask = function (event) {
-  const newTask = document.createElement("li");
-  newTask.textContent = "New Task";
+  const newTask = document.createElement("div");
+  newTask.innerHTML = "<p>New Task</p>";
   if (taskList) {
     taskList.appendChild(newTask);
   }
