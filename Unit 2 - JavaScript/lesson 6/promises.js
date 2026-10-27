@@ -22,7 +22,6 @@ order
   .catch(function (error) {
     console.log(error);
   });
-
 // console.log("You can continu to browse our menu..");
 
 // expand the order promise following
