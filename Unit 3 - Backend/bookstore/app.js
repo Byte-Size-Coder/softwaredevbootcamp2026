@@ -1,5 +1,6 @@
 const express = require("express");
 const productsRouter = require("./routes/routesProducts");
+const usersRouter = require("./routes/routesUsers");
 
 const app = express();
 
@@ -21,6 +22,8 @@ app.get("/", (req, res) => {
 
 //https://localhost:3000/products
 app.use("/products", productsRouter);
+
+app.use("/users", usersRouter);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

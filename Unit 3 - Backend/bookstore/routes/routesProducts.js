@@ -1,11 +1,23 @@
 const express = require("express");
-const products = require("../data/products");
+let products = require("../data/products");
 
 // set up a router
 // a router handles routes related to specifc data, for this instance, products
 const router = express.Router();
 
 router.get("/", (req, res) => {
+  // using query parameters to filter products if needed
+  console.log("Query parameters:", req.query);
+
+  const retreivedCategoryFromQueryPram = req.query.filterCategory;
+
+  if (retreivedCategoryFromQueryPram) {
+    const filteredProductsByCategory = products.filter(
+      (p) => p.category === retreivedCategoryFromQueryPram,
+    );
+    return res.json(filteredProductsByCategory);
+  }
+
   res.json(products);
 });
 
@@ -36,8 +48,57 @@ router.get("/:id", (req, res) => {
 // route to create a new product
 // http://localhost:3000/products
 router.post("/", (req, res) => {
-  console.log(req.body);
-  res.json({ message: "Product created" });
+  const newProduct = req.body;
+  products.push(newProduct);
+  console.log("Prouct list updated", products);
+
+  res.json({
+    message: "Product created",
+    newProductCreated: newProduct,
+    allProducts: products,
+  });
+});
+
+router.put("/:id", (req, res) => {
+  // update a product by ID
+  const incomingProductId = parseInt(req.params.id);
+  const foundProduct = products.find((p) => p.id === incomingProductId);
+
+  const updatedProductData = req.body;
+
+  if (foundProduct) {
+    if (updatedProductData.name) {
+      foundProduct.name = updatedProductData.name;
+    }
+
+    if (updatedProductData.category) {
+      foundProduct.category = updatedProductData.category;
+    }
+
+    if (updatedProductData.priceCents) {
+      foundProduct.priceCents = updatedProductData.priceCents;
+    }
+
+    res.json({
+      message: "Product updated",
+      updatedProduct: foundProduct,
+    });
+  } else {
+    res.status(404).json({ error: "Product not found" });
+  }
+});
+
+// delete a product by ID
+
+router.delete("/:id", (req, res) => {
+  const incomingProductId = parseInt(req.params.id);
+
+  products = products.filter((p) => p.id !== incomingProductId);
+
+  res.json({
+    message: "Product deleted",
+    allProducts: products,
+  });
 });
 
 module.exports = router;
