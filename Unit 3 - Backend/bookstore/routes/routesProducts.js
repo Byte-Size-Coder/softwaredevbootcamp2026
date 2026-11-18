@@ -33,4 +33,11 @@ router.get("/:id", (req, res) => {
   }
 });
 
+// route to create a new product
+// http://localhost:3000/products
+router.post("/", (req, res) => {
+  console.log(req.body);
+  res.json({ message: "Product created" });
+});
+
 module.exports = router;

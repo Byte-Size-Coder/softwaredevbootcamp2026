@@ -2,7 +2,13 @@ const express = require("express");
 const productsRouter = require("./routes/routesProducts");
 
 const app = express();
+
 const port = 3000;
+
+// middleware to parse JSON request bodies
+// middleware is a function that runs before the route handler
+// Must have this line before all your routes if you are expecting JSON request bodies
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.json({ name: "Campus Bookstore API" });
