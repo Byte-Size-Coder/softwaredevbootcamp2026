@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A community-style leaderboard ranking some of the most memorable video games."
+    />
+    <title>GameRank — Video Game Rankings</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 112.5%;
+        background: #101117;
+        color: #f5f5f7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+      }
+
+      header {
+        border-bottom: 1px solid #292a35;
+        background: #15161e;
+      }
+
+      .nav,
+      main,
+      footer {
+        width: min(100% - 2rem, 960px);
+        margin: 0 auto;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 68px;
+      }
+
+      .brand {
+        color: #a78bfa;
+        font-size: 1.2rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+      }
+
+      .nav a:last-child {
+        color: #c5c3d0;
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+
+      main {
+        padding: 3.5rem 0 4rem;
+      }
+
+      .intro {
+        margin-bottom: 2rem;
+      }
+
+      .eyebrow {
+        color: #a78bfa;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0.65rem 0;
+        font-size: clamp(2.2rem, 7vw, 3.8rem);
+        letter-spacing: -0.05em;
+      }
+
+      .intro p {
+        max-width: 600px;
+        margin: 0;
+        color: #a6a6b3;
+        line-height: 1.65;
+      }
+
+      .list-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin: 2.5rem 0 1rem;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+
+      .updated {
+        color: #858594;
+        font-size: 0.82rem;
+      }
+
+      ol {
+        display: grid;
+        gap: 0.8rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .game {
+        display: grid;
+        grid-template-columns: 58px 1fr auto;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.2rem;
+        border: 1px solid #2c2d39;
+        border-radius: 14px;
+        background: #191a23;
+        transition:
+          border-color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .game:hover {
+        transform: translateY(-2px);
+        border-color: #7562b5;
+      }
+
+      .rank {
+        color: #a78bfa;
+        font-size: 1.5rem;
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .game h3 {
+        margin: 0 0 0.35rem;
+        font-size: 1rem;
+      }
+
+      .game p {
+        margin: 0;
+        color: #a6a6b3;
+        font-size: 1rem;
+        line-height: 1.45;
+      }
+
+      .genre {
+        display: inline-block;
+        margin-top: 0.65rem;
+        padding: 0.25rem 0.55rem;
+        border-radius: 999px;
+        background: #292536;
+        color: #c9b9ff;
+        font-size: 0.85rem;
+      }
+
+      .score {
+        min-width: 68px;
+        color: #f3cb73;
+        font-size: 1.1rem;
+        font-weight: 800;
+        text-align: right;
+      }
+
+      .score span {
+        display: block;
+        margin-top: 0.2rem;
+        color: #858594;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      footer {
+        padding: 1.5rem 0;
+        border-top: 1px solid #292a35;
+        color: #858594;
+        font-size: 0.82rem;
+        text-align: center;
+      }
+
+      @media (max-width: 560px) {
+        main {
+          padding-top: 2.5rem;
+        }
+
+        .list-heading {
+          align-items: start;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+
+        .game {
+          grid-template-columns: 38px 1fr auto;
+          gap: 0.7rem;
+          padding: 0.9rem;
+        }
+
+        .rank {
+          font-size: 1.2rem;
+        }
+
+        .score {
+          min-width: 52px;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#">GAMERANK</a>
+        <a href="#rankings">Rankings</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div class="eyebrow">The ultimate leaderboard</div>
+        <h1 id="page-title">Game Rankings</h1>
+        <p>
+          Great games stay with us long after the credits roll. Explore our
+          ranked picks, from unforgettable adventures to all-time classics.
+        </p>
+      </section>
+
+      <section id="rankings" aria-labelledby="rankings-title">
+        <div class="list-heading">
+          <h2 id="rankings-title">Top games of all time</h2>
+          <span class="updated">Our editors' picks · 2026</span>
+        </div>
+
+        <ol>
+          <li class="game">
+            <div class="rank" aria-label="Rank 1">01</div>
+            <div>
+              <h3>The Legend of Zelda: Breath of the Wild</h3>
+              <p>A huge open world that rewards curiosity and creative play.</p>
+              <span class="genre">Adventure</span>
+            </div>
+            <div class="score">9.8<span>RANKING</span></div>
+          </li>
+          <li class="game">
+            <div class="rank" aria-label="Rank 2">02</div>
+            <div>
+              <h3>Minecraft</h3>
+              <p>An endlessly inventive sandbox for building and exploring.</p>
+              <span class="genre">Sandbox</span>
+            </div>
+            <div class="score">9.7<span>RANKING</span></div>
+          </li>
+          <li class="game">
+            <div class="rank" aria-label="Rank 3">03</div>
+            <div>
+              <h3>Portal 2</h3>
+              <p>Smart puzzles, memorable characters, and a brilliant sense of humor.</p>
+              <span class="genre">Puzzle</span>
+            </div>
+            <div class="score">9.6<span>RANKING</span></div>
+          </li>
+          <li class="game">
+            <div class="rank" aria-label="Rank 4">04</div>
+            <div>
+              <h3>Super Mario Odyssey</h3>
+              <p>A joyful platforming adventure full of secrets and surprises.</p>
+              <span class="genre">Platformer</span>
+            </div>
+            <div class="score">9.4<span>RANKING</span></div>
+          </li>
+          <li class="game">
+            <div class="rank" aria-label="Rank 5">05</div>
+            <div>
+              <h3>Stardew Valley</h3>
+              <p>A relaxing farming life sim with a world full of personality.</p>
+              <span class="genre">Simulation</span>
+            </div>
+            <div class="score">9.2<span>RANKING</span></div>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      Rankings are editorial picks and reflect personal opinions.
+    </footer>
+  </body>
+</html>
