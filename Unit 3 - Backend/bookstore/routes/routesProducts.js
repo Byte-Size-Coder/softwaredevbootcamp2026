@@ -1,24 +1,28 @@
 const express = require("express");
+const mongoose = require("mongoose");
 let products = require("../data/products");
+
+const ProductModel = require("../models/Product");
 
 // set up a router
 // a router handles routes related to specifc data, for this instance, products
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   // using query parameters to filter products if needed
-  console.log("Query parameters:", req.query);
+  // console.log("Query parameters:", req.query);
 
   const retreivedCategoryFromQueryPram = req.query.filterCategory;
 
   if (retreivedCategoryFromQueryPram) {
-    const filteredProductsByCategory = products.filter(
-      (p) => p.category === retreivedCategoryFromQueryPram,
-    );
-    return res.json(filteredProductsByCategory);
+    const filter = { category: retreivedCategoryFromQueryPram };
+    const fetchedFilteredProduct = await ProductModel.find(filter);
+    return res.json(fetchedFilteredProduct);
   }
 
-  res.json(products);
+  const fetchedProducts = await ProductModel.find();
+
+  res.json(fetchedProducts);
 });
 
 // : initiaties a dynamic route parameter
@@ -27,78 +31,101 @@ router.get("/", (req, res) => {
 // http://localhost:3000/products/1
 // http://localhost:3000/products/2
 // http://localhost:3000/products/3
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   //res.json({ x: req.params.id, type: typeof req.params.id });
 
-  // "1" -> 1
-  // "asdasd" -> NaN
-  // parseInt is a built in function that converts a string to an integer
-  const incomingProductId = parseInt(req.params.id);
+  const incomingProductId = req.params.id;
 
-  const foundProduct = products.find((p) => p.id === incomingProductId);
-
-  if (foundProduct) {
-    console.log("Hello here is a change");
-    res.json(foundProduct);
-  } else {
-    res.status(404).json({ error: "Product not found" });
+  if (!mongoose.isObjectIdOrHexString(incomingProductId)) {
+    return res.status(400).json({ error: "Invalid product ID" });
   }
+
+  const foundProduct = await ProductModel.findById(incomingProductId);
+
+  if (!foundProduct) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  res.json(foundProduct);
 });
 
 // route to create a new product
 // http://localhost:3000/products
-router.post("/", (req, res) => {
-  const newProduct = req.body;
-  products.push(newProduct);
-  console.log("Prouct list updated", products);
+router.post("/", async (req, res) => {
+  // object deconstruction
+  // takes the values from an object and stores them into seperate variables
+  // const obj = {
+  //   name: "test",
+  //   category: "test",
+  //   price: 0
+  // }
 
-  res.json({
-    message: "Product created",
-    newProductCreated: newProduct,
-    allProducts: products,
-  });
+  // const {name, category, price} = obj
+
+  // console.log(name)
+  // console.log(category)
+  // (leftside) ?? (right side) -> ?? means if left side doesnt exists, use right side
+  const { name, category, price } = req.body;
+
+  try {
+    console.log(name);
+    const createdProduct = await ProductModel.create({
+      name,
+      category,
+      price,
+    });
+    res.status(201).json(createdProduct);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error });
+  }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   // update a product by ID
-  const incomingProductId = parseInt(req.params.id);
-  const foundProduct = products.find((p) => p.id === incomingProductId);
+  const incomingProductId = req.params.id;
 
-  const updatedProductData = req.body;
-
-  if (foundProduct) {
-    if (updatedProductData.name) {
-      foundProduct.name = updatedProductData.name;
-    }
-
-    if (updatedProductData.category) {
-      foundProduct.category = updatedProductData.category;
-    }
-
-    if (updatedProductData.priceCents) {
-      foundProduct.priceCents = updatedProductData.priceCents;
-    }
-
-    res.json({
-      message: "Product updated",
-      updatedProduct: foundProduct,
-    });
-  } else {
-    res.status(404).json({ error: "Product not found" });
+  if (!mongoose.isObjectIdOrHexString(incomingProductId)) {
+    return res.status(400).json({ error: "Invalid product ID" });
   }
+
+  // find the product by ID
+
+  const foundProduct = await ProductModel.findById(incomingProductId);
+
+  if (!foundProduct) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  const updates = req.body;
+
+  for (const field of ["name", "category", "price"]) {
+    if (Object.hasOwn(updates, field)) {
+      foundProduct[field] = updates[field];
+    }
+  }
+
+  await foundProduct.save();
+  res.json(foundProduct);
 });
 
 // delete a product by ID
 
-router.delete("/:id", (req, res) => {
-  const incomingProductId = parseInt(req.params.id);
+router.delete("/:id", async (req, res) => {
+  const incomingProductId = req.params.id;
 
-  products = products.filter((p) => p.id !== incomingProductId);
+  if (!mongoose.isObjectIdOrHexString(incomingProductId)) {
+    return res.status(400).json({ error: "Invalid product ID" });
+  }
 
-  res.json({
-    message: "Product deleted",
-    allProducts: products,
-  });
+  const deletedProduct =
+    await ProductModel.findByIdAndDelete(incomingProductId);
+
+  if (!deletedProduct) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  res.json({ message: "Product deleted" });
 });
 
 module.exports = router;

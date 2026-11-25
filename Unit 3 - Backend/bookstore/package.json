@@ -12,7 +12,8 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "mongoose": "^9.13.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

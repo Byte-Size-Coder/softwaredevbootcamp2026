@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const productsRouter = require("./routes/routesProducts");
 const usersRouter = require("./routes/routesUsers");
 
@@ -25,6 +26,16 @@ app.use("/products", productsRouter);
 
 app.use("/users", usersRouter);
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+async function startServer() {
+  await mongoose.connect("mongodb://127.0.0.1:27017/campus_bookstore");
+  console.log(`Connected to MongoDB database`);
+
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+}
+
+startServer().catch(() => {
+  console.error("Could not connect to MongoDb. Check that it is running");
+  process.exitCode = 1;
 });
