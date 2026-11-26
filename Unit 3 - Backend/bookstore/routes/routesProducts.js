@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-let products = require("../data/products");
 
 const ProductModel = require("../models/Product");
 
