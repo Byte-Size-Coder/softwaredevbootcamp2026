@@ -20,8 +20,18 @@ router.get("/", async (req, res) => {
 
 // http://localhost:3000/products/catalog?filterCategory=books&maxPrice=25&page=1&limit=2
 
+// Challenge
+// Impelement minPrice query parameter
+// have a minPrice query parameter to filter products with a minimum price
+
 router.get("/catalog", async (req, res) => {
-  const { filterCategory, maxPrice, page = "1", limit = "5" } = req.query;
+  const {
+    filterCategory,
+    minPrice,
+    maxPrice,
+    page = "1",
+    limit = "5",
+  } = req.query;
 
   const filter = {};
 
@@ -29,8 +39,47 @@ router.get("/catalog", async (req, res) => {
     filter.category = filterCategory;
   }
 
+  const priceFilter = {};
+
+  if (minPrice) {
+    const minimum = Number(minPrice);
+    if (!Number.isFinite(minimum) || minimum < 0) {
+      return res.status(400).json({
+        error:
+          "Invalid minPrice (must be a number and greater than or equal to 0)",
+      });
+    }
+
+    priceFilter.$gte = minimum;
+  }
+
   if (maxPrice) {
-    filter.price = { $lte: Number(maxPrice) };
+    const maximum = Number(maxPrice);
+
+    if (!Number.isFinite(maximum) || maximum < 0) {
+      return res.status(400).json({
+        error:
+          "Invalid maxPrice (must be a number and greater than or equal to 0)",
+      });
+    }
+
+    priceFilter.$lte = maximum;
+  }
+
+  // if both minPrice and maxPrice are provided and minPrice is greater than maxPrice, return an error
+  if (
+    priceFilter.$gte &&
+    priceFilter.$lte &&
+    priceFilter.$gte > priceFilter.$lte
+  ) {
+    return res
+      .status(400)
+      .json({ error: "minPrice cannot be greater than maxPrice" });
+  }
+
+  // do we have any properties in our priceFilter object?
+  if (Object.keys(priceFilter).length > 0) {
+    filter.price = priceFilter;
   }
 
   const pageNumber = Number(page);
