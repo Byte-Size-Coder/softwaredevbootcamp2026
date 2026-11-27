@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const productsRouter = require("./routes/routesProducts");
+const ordersRouter = require("./routes/routesOrders");
 const usersRouter = require("./routes/routesUsers");
 
 const app = express();
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 //https://localhost:3000/products
 app.use("/products", productsRouter);
+app.use("/orders", ordersRouter);
 
 app.use("/users", usersRouter);
 
